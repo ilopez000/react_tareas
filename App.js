@@ -1,30 +1,80 @@
-import React, { useState } from 'react';
-import TaskList from './TaskList';
-import AddTask from './AddTask';
-
-function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'Aprender React' },
-    { id: 2, text: 'Hacer la tarea' },
-  ]);
-
-  const addTask = (text) => {
-    const newTask = { id: Date.now(), text };
-    setTasks([...tasks, newTask]);
-  };
-
-  const deleteTask = (id) => {
-    const updatedTasks = tasks.filter(task => task.id !== id);
-    setTasks(updatedTasks);
-  };
-
-  return (
-    <div className="App">
-      <h1>Lista de Tareas</h1>
-      <AddTask onAdd={addTask} />
-      <TaskList tasks={tasks} onDelete={deleteTask} />
-    </div>
-  );
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
 }
 
-export default App;
+.App {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+}
+
+/* Estilos para la lista de tareas */
+div[style] { /* Para sobrescribir los estilos en línea del componente Task */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e7e9ed;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+button {
+    padding: 5px 15px;
+    background-color: #f44336; /* Rojo */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f; /* Rojo oscuro */
+}
+
+/* Estilos para el formulario de añadir tarea */
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #e7e9ed;
+    border-radius: 4px;
+}
+
+input[type="submit"], /* Estilo para el botón del formulario */
+button[type="submit"] {
+    padding: 10px 15px;
+    background-color: #4CAF50; /* Verde */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: #388E3C; /* Verde oscuro */
+}
+
